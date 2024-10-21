@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Home-InsertPage</title>
+    <style>
+        body,html{
+            height: 100%;
+            margin: 0;
+        }
+    .login-BG{
+        background-image: url("g.jpg");
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .input-text{
+        color:white;
+        font-size:25px;
+    }
+
+    .input-box{
+        display: flex;
+        margin-bottom: 12px;
+        margin-top: 18px;
+        padding-right:200px;
+        padding-left: 10px;
+        padding-top: 15px;
+        padding-bottom: 12px;
+        border-radius: 0px;
+        border-width: 0px;
+        background-color:bisque;
+        font-size: large;
+        color: black;
+    }
+    .input-box-order{
+        display: flex;
+        margin-bottom: 12px;
+        margin-top: 18px;
+        padding-right:230px;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-bottom: 12px;
+        border-radius: 0px;
+        border-width: 0px;
+        background-color:bisque;
+        font-size: large;
+        color: black;
+    }
+    .submit{
+        margin-top: 20px;
+        padding-right:40px;
+        padding-left: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 0px;
+        border-width: 0px;
+        background-color: bisque;
+        color: black;
+        margin-left: 143px;
+        cursor: pointer;
+        font-size: large;
+    }
+
+    .submit:hover{
+        background-color:lightgreen;
+        color:black;
+    }
+
+    .box-grid{
+        display: grid;
+        position: relative;
+        width: 425px;
+        height: 223px;
+        background-color:transparent;
+        margin-left:80px ;
+        margin-bottom: 15px;
+        top: 80px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="login-BG">
+        <div class="box-grid">
+            <form  action="passengerdb.php" method="get">
+                <label class="input-text" for="Name of the passenger">Name of the passenger<br></label>
+                <input class="input-box" type="text" id="n1" name="n1" required><br>
+                <label class="input-text" for="Age">Age<br></label>
+                <input class="input-box" type="text" id="n2" name="n2" required><br>
+                <label class="input-text" for="Choose meal option">Choose meal option<br></label>                 
+                <select class="input-box-order" name="n3">
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Veg-Kids-meal">Veg-kids-meal</option>
+                    <option value="Non-Veg-Kids-meal">Non-Veg-kids-meal</option>
+                    </select><br>
+                    <input class="submit" type="submit">
+            </form>
+        </div>    
+    </div>
+</body>
+</html>
