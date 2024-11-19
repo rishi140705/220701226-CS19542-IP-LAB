@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+</head>
+<body>
+    <h2>Fetch Student Data</h2>
+    <form action="FetchDataServlet" method="post">
+        <label for="registerNumber">Register Number:</label>
+        <input type="text" id="registerNumber" name="registerNumber" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+@WebServlet("/FetchDataServlet")
+public class FetchDataServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String registerNumber = request.getParameter("registerNumber");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String jdbcURL = "jdbc:mysql://localhost:3306/StudentDB";
+        String dbUser = "root";
+        String dbPassword = "your_password";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+            String sql = "SELECT name, course, dob FROM students WHERE register_number = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, registerNumber);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String course = resultSet.getString("course");
+                String dob = resultSet.getString("dob");
+                out.println("<h2>Student Information</h2>");
+                out.println("<p>Register Number: " + registerNumber + "</p>");
+                out.println("<p>Name: " + name + "</p>");
+                out.println("<p>Course: " + course + "</p>");
+                out.println("<p>Date of Birth: " + dob + "</p>");
+            } else {
+                out.println("<h2>No student found with Register Number " + registerNumber + "</h2>");
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.println("<p>Error: " + e.getMessage() + "</p>");
+        } finally {
+            out.close();
+        }
+    }
+}

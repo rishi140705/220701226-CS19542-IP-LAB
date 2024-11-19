@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+function validate()
+{
+let x = document.forms["rec"]["username"].value;
+var y = document.getElementById("pass").value;
+if(x == "")
+{
+alert("fill all fields);
+}
+if(y < 6)
+(
+alert("Password should be above 6 characters");
+)
+</script>
+</head>
+<body>
+<form name="rec" action="" method="post" onsubmit="return validate()">
+<label>Username</label>
+<br>
+<input type="text" id="user" name="user" name="username">
+<br/>
+<label>Password</label>
+<br/>
+<input type="text" id="pass" name="password">
+<br/>
+<label>phone number</label>
+<br/>
+<input type="number" id="ph no" name="ph no" name="ph no">
+<br/>
+<label>Gender</label>
+<br/>
+<label for="Gender-select"></label>
+<select id="Gender-select">
+  <option value="">--Select a Gender--</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+<br/>
+<br/>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+
+
+
+
